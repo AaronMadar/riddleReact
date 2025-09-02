@@ -10,7 +10,7 @@ export default function HomePage() {
 
             <a href="" ><button>Launch Game</button></a>
             <a href="/login"><button >Login </button></a>
-            <a href=""><button>To subscribe </button></a>
+            <a href="/subscribe"><button>To subscribe </button></a>
 
 
 

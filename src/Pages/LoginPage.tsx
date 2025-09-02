@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import AuthProvider from "../context/AuthContext"
+import AuthContext from "../context/AuthContext"
 
 
 
@@ -7,7 +7,7 @@ export default function LoginPage(){
 
     const [username,setusername] = useState("")
     const [password,setpassword] = useState("")
-    const {login} = useContext(AuthProvider)
+    // const {login} = useContext(AuthContext)
 
     async function Handleclick(e){  
         e.preventDefault()
@@ -28,7 +28,7 @@ export default function LoginPage(){
         const result = await response.json();
         console.log("You are logged in!");
         console.log("Résultat:", result);
-        login()
+        // login()
         return true;
   } catch (e) {
     console.log("Server error:", e.message);
