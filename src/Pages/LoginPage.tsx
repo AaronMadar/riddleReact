@@ -7,6 +7,7 @@ export default function LoginPage(){
 
     const [username,setusername] = useState("")
     const [password,setpassword] = useState("")
+    const [errorMessage, setErrorMessage] = useState("");
     const {login} = useContext(AuthContext)
 
     async function Handleclick(e){  
@@ -22,6 +23,7 @@ export default function LoginPage(){
 
         if (!response.ok) {
         console.log(`Login failed: ${response.status} ${response.statusText}`);
+        setErrorMessage(`Signup failed: ${response.status} ${response.statusText}`);
         return false;
         }
 
@@ -32,6 +34,7 @@ export default function LoginPage(){
         return true;
   } catch (e) {
     console.log("Server error:", e.message);
+    setErrorMessage(`Server error: ${e.message}`);
     return false;
   }
     }
@@ -46,6 +49,7 @@ export default function LoginPage(){
         <input type="password"  placeholder="Enter your password" onChange={(e)=>setpassword(e.target.value)} value={password} required />
         <button type="submit">Login</button>
         </form>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         
         
         </>
