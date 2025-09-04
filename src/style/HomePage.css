@@ -1,0 +1,43 @@
+body {
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0edff;
+}
+
+#root {
+    width: 30%;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 19px;
+    padding: 20px  ;
+    text-align: center;
+    background-color: #fff;
+}
+
+#root h1 {
+    font-size: 2.5 ;
+}
+#root p{
+    font-size: 1.2rem;
+}
+
+
+
+
+section button {
+    color: rgb(0, 0, 0);
+    padding: 10px 30px;
+    background-color: #c4d94a;
+    border-radius: 25px;
+    margin:5px;
+
+}

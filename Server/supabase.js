@@ -1,6 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
+
 
 dotenv.config({ path: "./Server/.env" }); // <--- chemin relatif correct
 
@@ -11,7 +13,7 @@ const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
-export async function signupdb(userdetails) {
+export async function subscribe(userdetails) {
     const { username, password } = userdetails;
     
     
@@ -50,7 +52,7 @@ export async function signupdb(userdetails) {
                { expiresIn: '20m' }
            );
         console.log('Utilisateur créé:', username);
-        return {success:true, token};
+        return {success:true, token , data};
     } catch (error) {
         console.log('Erreur Supabase:', error.message);
         return false;
@@ -92,7 +94,7 @@ export async function logindb(userdetails) {
                { expiresIn: '20m' }
            );
            console.log('Connexion réussie pour:', username);
-           return { token, username: data.username };
+           return { token, username: data.username, data };
 
         
     } catch (error) {
