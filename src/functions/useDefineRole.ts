@@ -9,10 +9,12 @@ export default function useDefineRole(obj) {
   switch (obj.data.data.role || obj.data.data[0].role) {
     case 'user':
       setIsUser(true);
+      return 'user'
       break;
 
     case 'admin':
       setIsAdmin(false);
+      return 'admin'
       break;
 
     default:

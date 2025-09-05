@@ -1,6 +1,8 @@
 import { useContext, useState } from "react"
 import {AuthContext} from "../context/AuthContext"
 import useDefineRole from '../functions/useDefineRole.ts'
+import getRole from '../functions/getRole.js'
+import { useNavigate } from "react-router"
 
 
 
@@ -10,8 +12,8 @@ export default function LoginPage(){
     const [username,setusername] = useState("")
     const [password,setpassword] = useState("")
     const [errorMessage, setErrorMessage] = useState("");
-    const {login} = useContext(AuthContext)
-
+    const {login,isUser,isAdmin} = useContext(AuthContext)
+    const navigate = useNavigate()
     async function Handleclick(e){  
         e.preventDefault()
 
@@ -32,11 +34,15 @@ export default function LoginPage(){
         const result = await response.json();
         console.log("You are logged in!");
         console.log("Résultat:", result);
+
         login()
-        localStorage.setItem("token", result.data.token)
+           
         
         
-        useDefineRole(result)
+        let role = getRole(result)
+        if (role === 'user')navigate('/game')
+        if (role === 'admin') navigate('/admin')
+        
         return true;
   } catch (e) {
     console.log("Server error:", e.message);

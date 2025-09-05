@@ -1,12 +1,16 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import  getRole  from "../functions/getRole.js"
 import useDefineRole from "../functions/useDefineRole";
+import { useNavigate } from "react-router";
 
 export default function SubscribePage() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate()
+
 
 
   const { login } = useContext(AuthContext)
@@ -33,6 +37,10 @@ export default function SubscribePage() {
       login()
       localStorage.setItem('token', result.data.token)
       useDefineRole(result)
+      let role = getRole(result)
+      if (role === 'user') navigate('/game')
+      if (role === 'admin') navigate('/admin')
+
 
       return true;
     } catch (e) {
@@ -47,8 +55,8 @@ export default function SubscribePage() {
     <>
       <h1>Subscribe Page</h1>
       <form onSubmit={handleClick}>
-        <input type="text" placeholder="Enter your name" onChange={(e) => { setUsername(e.target.value);setErrorMessage("") }} value={username} required />
-        <input type="password" placeholder="create a password" onChange={(e) => { setPassword(e.target.value);setErrorMessage("") }} value={password} required />
+        <input type="text" placeholder="Enter your name" onChange={(e) => { setUsername(e.target.value); setErrorMessage("") }} value={username} required />
+        <input type="password" placeholder="create a password" onChange={(e) => { setPassword(e.target.value); setErrorMessage("") }} value={password} required />
         <button type="submit">subscribe</button>
       </form>
 
