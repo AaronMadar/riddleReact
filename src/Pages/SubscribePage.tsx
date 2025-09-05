@@ -39,7 +39,7 @@ export default function SubscribePage() {
       useDefineRole(result)
       let role = getRole(result)
       if (role === 'user') navigate('/game')
-      if (role === 'admin') navigate('/admin')
+      if (role === 'admin') navigate('/adminpage')
 
 
       return true;

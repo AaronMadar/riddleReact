@@ -41,7 +41,7 @@ export default function LoginPage(){
         
         let role = getRole(result)
         if (role === 'user')navigate('/game')
-        if (role === 'admin') navigate('/admin')
+        if (role === 'admin') navigate('/adminpage')
         
         return true;
   } catch (e) {
