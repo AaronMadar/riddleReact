@@ -9,6 +9,12 @@ import SubscribePage from './Pages/SubscribePage.tsx'
 import GamePage from './Pages/GamePage.tsx'
 import LevelPage from './Pages/LevelPage.tsx'
 import LevelProvider from './context/LevelContext.tsx'
+import AdminPage from './Pages/AdminPage.tsx'
+import Create from './Pages/CreatePage.tsx'
+import Read from './Pages/ReadPage.tsx'
+import Update from './Pages/UpdatePage.tsx'
+import Delete from './Pages/DeletePage.tsx'
+import LeaderBoard from './Pages/Leaderboard.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -21,6 +27,12 @@ createRoot(document.getElementById('root')!).render(
             <Route path='/subscribe' element={<SubscribePage />} />
             <Route path='/game' element={<GamePage />} />
             <Route path='/levelselection' element={<LevelPage />} />
+            <Route path='/adminpage' element={<AdminPage />} />
+            <Route path='/leaderboard' element={<LeaderBoard />} />
+            <Route path='/createnewriddle' element={<Create />} />
+            <Route path='/getallriddle' element={<Read />} />
+            <Route path='/updateriddle' element={<Update />} />
+            <Route path='/deleteriddle' element={<Delete />} />
           </Routes>
         </BrowserRouter>
       </LevelProvider>
